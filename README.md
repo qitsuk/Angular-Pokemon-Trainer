@@ -1,27 +1,42 @@
 # AngularPokemonTrainer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
+## Description
+In this project, we aim to build a Pokémon Trainer Single Page Application, using the Angular framework.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Dependencies
 
-## Code scaffolding
+* Angular (v13) CLI
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Node Package Manager (npm)
 
-## Build
+### Deploying 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* Clone the folder to your system.
+* Go to the root of the cloned folder, and run "npm install" from your favorite terminal.
 
-## Running unit tests
+### Executing the SPA
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* After running the npm install command, remain in your root directory and run "ng serve" in your terminal.
 
-## Running end-to-end tests
+### Online Deployment
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* To see a deployed version og this SPA, please visit https://placeholder.herokuapp.com/
 
-## Further help
+## Help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Contact [@Epiko1994](https://github.com/Epiko1994) or [@qitsuk](https://github.com/qitsuk), if you need further assistance.
+
+## Authors
+
+* [@Epiko1994](https://github.com/Epiko1994)
+* [@qitsuk](https://github.com/qitsuk)
+
+## License
+
+This project is lisenced under the MIT License.
+
+## Acknowledgments
+
+We would like to extend our thanks, to the teachers at Noroff for extending this challenge.
