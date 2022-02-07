@@ -1,0 +1,8 @@
+<div class="container text-center">
+    <h1>Welcome to the Catalogue</h1>
+    <ul>
+        <app-pokemon-display *ngFor="let pokemon of pokemons" [pokemon]="pokemon"></app-pokemon-display>
+    </ul>
+    <button class="btn btn-primary btn-lg" (click)="backToTrainerClick()">Back to my page</button>
+    <button class="btn btn-danger btn-lg" (click)="signOutClick()">Sign out!</button>
+</div>

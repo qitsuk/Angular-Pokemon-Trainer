@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CataloguePage } from './catalogue/catalogue.page';
 import { FrontPage } from './frontpage/frontpage.page';
+import { PokemonDisplayComponent } from './pokemon-display/pokemon-display.component';
+import { TrainerOverviewComponent } from './trainer-overview/trainer-overview.component';
 import { TrainerPage } from './trainer-page/trainer.page';
 
 @NgModule({
@@ -13,12 +16,15 @@ import { TrainerPage } from './trainer-page/trainer.page';
     AppComponent,
     FrontPage,
     TrainerPage,
-    CataloguePage
+    CataloguePage,
+    TrainerOverviewComponent,
+    PokemonDisplayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

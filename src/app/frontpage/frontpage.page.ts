@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "app-frontpage",
@@ -9,9 +10,13 @@ import { NgForm } from "@angular/forms";
 
 export class FrontPage {
 
+    constructor(
+        private readonly router: Router
+    ) {}
     public onSubmit(usernameForm :NgForm): void {
         console.log(usernameForm.valid);
         this.setLocalUsername(usernameForm.controls['username'].value);
+        this.router.navigateByUrl("trainer");
 
     }
 

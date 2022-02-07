@@ -8,17 +8,18 @@ import { Router } from "@angular/router";
 })
 
 export class TrainerPage {
-    
+    constructor(private readonly router: Router) {}
     username: string | null = localStorage.getItem("username");
     public printUsername(): void {
         console.log(this.username);
     }
-    public signOutClicked(): void {
+    public signOutButtonClick(): void {
+        this.router.navigateByUrl("");
         localStorage.clear();
-        console.log("Signout function called!")
+        console.log("I AM CLICKING!!!");
     }
     public catalogueButtonClick(): void {
-        
+        this.router.navigateByUrl("catalogue");
     }
 
 }
