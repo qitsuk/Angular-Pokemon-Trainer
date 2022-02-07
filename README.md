@@ -18,7 +18,7 @@ In this project, we aim to build a Pokémon Trainer Single Page Application, usi
 
 ### Executing the SPA
 
-* After running the npm install command, remain in your root directory and run "ng serve" in your terminal.
+* After running the npm install command, remain in your root directory and run "ng serve -o" in your terminal. The -o will open the SPA in your primary default browser. Alternatively, you could just run "ng serve" and navigate to http://localhost:4200 in you preferred browser.
 
 ### Online Deployment
 
