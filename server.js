@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.use(express.static(__dirname + '/dist/<angular-pokemon-trainer>'));
+app.use(express.static(__dirname + '/dist/angular-pokemon-trainer'));
 app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+
-'/dist/<angular-pokemon-trainer>/index.html'));});
+'/dist/angular-pokemon-trainer/index.html'));});
 app.listen(process.env.PORT || 3000);
