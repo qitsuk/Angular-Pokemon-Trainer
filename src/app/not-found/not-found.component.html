@@ -1,0 +1,14 @@
+<main class="container text-center">
+  <h1>Hey!! Waddaya doing here?</h1>
+  <p>You shouldn't be poking around here, theres nothing to find for you here!</p>
+  <img src="../../assets/images/NotFound.png">
+  <div *ngIf="loggedIn === true;">
+    <div ng-template #catalogue>
+      <button class="btn btn-primary btn-lg" (click)="toTrainerPageClick()">Go to Trainer Page</button>
+      <button class="btn btn-primary btn-lg" (click)="toCatalogueClick()">Go to Catalogue</button>
+    </div>
+  </div>
+  <div ng-template #frontPage>
+    <button class="btn btn-primary btn-lg" (click)="backToFrontPageClick()">Back to Frontpage</button>
+  </div>
+</main>
