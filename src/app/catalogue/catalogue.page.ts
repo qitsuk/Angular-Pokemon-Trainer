@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { Pokemon } from "../models/pokemon.model";
 import { PokemonService } from "../services/pokemon.service";
+import { TrainerService } from "../services/trainer.service";
 
 @Component({
     selector: "app-catalogue-page",
@@ -14,7 +15,8 @@ export class CataloguePage implements OnInit {
     pokemonList: Pokemon[] = [];
     constructor(
         private readonly router: Router,
-        private readonly pokemonService: PokemonService
+        private readonly pokemonService: PokemonService,
+        private readonly trainerService: TrainerService
     ) {
     }
     private _url: string = "https://pokeapi.co/api/v2/pokemon?limit=50";
@@ -39,7 +41,9 @@ export class CataloguePage implements OnInit {
     }
     signOutClick(): void {
         localStorage.clear();
+        this.trainerService.clearTrainer();
         this.router.navigateByUrl("home");
+
     }
 
 

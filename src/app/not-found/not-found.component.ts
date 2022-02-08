@@ -16,15 +16,17 @@ export class NotFoundComponent implements OnInit {
     loggedIn: boolean = false;
 
   ngOnInit(): void {
-    this.loggedIn = this.trainerService.loggedIn;
+    if (localStorage.getItem("user") !== null) {
+      this.loggedIn = true;
+    }
     console.log(this.loggedIn);
   }
   toCatalogueClick() {
-
+    this.router.navigateByUrl("catalogue");
   }
 
   toTrainerPageClick() {
-
+    this.router.navigateByUrl("trainer");
   }
 
   backToFrontPageClick() {

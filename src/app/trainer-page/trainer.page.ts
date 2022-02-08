@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { TrainerService } from "../services/trainer.service";
 
 @Component({
     selector: "app-trainer-page",
@@ -8,7 +9,7 @@ import { Router } from "@angular/router";
 })
 
 export class TrainerPage {
-    constructor(private readonly router: Router) {}
+    constructor(private readonly router: Router, private trainerService: TrainerService) {}
     username: string | null = localStorage.getItem("username");
     public printUsername(): void {
         console.log(this.username);
@@ -16,7 +17,8 @@ export class TrainerPage {
     public signOutButtonClick(): void {
         this.router.navigateByUrl("");
         localStorage.clear();
-        console.log("I AM CLICKING!!!");
+        this.trainerService.clearTrainer();
+
     }
     public catalogueButtonClick(): void {
         this.router.navigateByUrl("catalogue");
