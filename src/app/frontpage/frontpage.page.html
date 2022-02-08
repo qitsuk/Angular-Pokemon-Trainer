@@ -1,21 +1,27 @@
-<div class="container text-center">
-    <h1>Angular Pokémon Trainer</h1>
-    <h4>Hello. Please enter your Trainer name to continue:</h4>
+<main class="container text-center">
+  <h1>Angular Pokémon Trainer</h1>
+  <h4>Hello. Please enter your Trainer name to continue:</h4>
 
-    <form #usernameForm="ngForm" (ngSubmit)="onSubmit(usernameForm)">
-        <fieldset class="mb-3">
-            <label class="form-label mb-5" for="username">Trainer Name</label>
-            <input class="form-control" type="text" id="username" name="username"
-                placeholder="Enter your trainer name here." required minlength="3" maxlength="40" ngModel
-                #username="ngModel"
-                [ngClass]="{'is-valid': username.valid, 'is-invalid': (username.invalid && (username.dirty || username.touched))}">
-            <div *ngIf="username.invalid && (username.dirty || username.touched)">
-                <p class="text-danger" *ngIf="username.errors?.['required']">You must enter trainer name.</p>
-                <p class="text-danger" *ngIf="username.errors?.['minlength']">Your trainer name must be three characters
-                    or more.</p>
-            </div>
-        </fieldset>
-        <button type="submit" [disabled]="usernameForm.invalid"
-            class="btn btn-primary btn-lg">Let's go!</button>
-    </form>
-</div>
+  <form #usernameForm="ngForm" (ngSubmit)="onSubmit(usernameForm)">
+    <fieldset class="mb-3">
+      <label class="form-label mb-5" for="username">Trainer Name</label>
+      <input class="form-control" type="text" id="username" name="username" placeholder="Enter your trainer name here."
+        required minlength="3" maxlength="40" ngModel #username="ngModel"
+        [ngClass]="{'is-valid': username.valid, 'is-invalid': (username.invalid && (username.dirty || username.touched))}">
+      <div *ngIf="username.invalid && (username.dirty || username.touched)">
+        <p class="text-danger" *ngIf="username.errors?.['required']">You must enter trainer name.</p>
+        <p class="text-danger" *ngIf="username.errors?.['minlength']">Your trainer name must be three characters
+          or more.</p>
+      </div>
+    </fieldset>
+    <button type="submit" [disabled]="usernameForm.invalid" class="btn btn-primary btn-lg">Let's go!</button>
+  </form>
+</main>
+<footer class="footer fixed-bottom">
+  <div class="container">
+    <span>
+    <a href="https://www.flaticon.com/free-icons/pokemon"
+    title="pokemon icons">Favicon created by Nikita Golubev -
+      Flaticon</a></span>
+  </div>
+</footer>

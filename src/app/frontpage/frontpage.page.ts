@@ -22,6 +22,7 @@ export class FrontPage {
 
     public onSubmit(usernameForm :NgForm) {
         console.log(usernameForm.valid);
+
         this.setLocalUsername(usernameForm.controls['username'].value);
 
         this.trainerService.login(usernameForm.controls['username'].value)
@@ -32,10 +33,5 @@ export class FrontPage {
             })
 
         this.router.navigateByUrl("trainer");
-    }
-
-    private setLocalUsername(username: string) {
-        console.log("Set local username function called!")
-        localStorage.setItem('username', username);
     }
 }

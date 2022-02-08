@@ -5,10 +5,10 @@ import { map, Observable, of, switchMap } from "rxjs";
 import { environment } from "src/environments/environment";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class TrainerService {
+
     private _trainers: Trainer[] = [];
     private _error: string = '';
     private _trainerUrl: string = environment.apiTrainersUrl;
@@ -19,6 +19,8 @@ export class TrainerService {
             'X-API-key': this._apiKey
         })
     }
+
+    public loggedIn: boolean = false;
 
     constructor(private readonly http: HttpClient) { }
 
@@ -50,23 +52,6 @@ export class TrainerService {
         }
         return this.http.post<Trainer>(this._trainerUrl, trainer, this._httpOptions)
     }
-    
-    /*public fetchTrainers(): void {
-        this.http.get<Trainer[]>
-        (this._trainerUrl)
-            .subscribe({
-                next: (trainers: Trainer[]) => {
-                    this._trainers = trainers;
-                },
-                error: (error: HttpErrorResponse) => {
-                    this._error = error.message;
-                }
-            });
-    }
-
-    public postTrainer(trainer: Trainer): Observable<Trainer> {
-        return this.http.post<Trainer>(this._trainerUrl, trainer, this._httpOptions);
-    }*/
 
     public trainers(): Trainer[] {
         return this._trainers;
@@ -76,3 +61,4 @@ export class TrainerService {
         return this._error;
     }
 }
+

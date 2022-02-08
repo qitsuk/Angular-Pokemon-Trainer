@@ -10,6 +10,7 @@ import { FrontPage } from './frontpage/frontpage.page';
 import { PokemonDisplayComponent } from './pokemon-display/pokemon-display.component';
 import { TrainerOverviewComponent } from './trainer-overview/trainer-overview.component';
 import { TrainerPage } from './trainer-page/trainer.page';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TrainerPage } from './trainer-page/trainer.page';
     TrainerPage,
     CataloguePage,
     TrainerOverviewComponent,
-    PokemonDisplayComponent
+    PokemonDisplayComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
