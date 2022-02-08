@@ -1,6 +1,11 @@
 <div>
-  <img class="pokeimage" src="https://lorempokemon.fakerapi.it/pokemon" />
-</div>
-<div>
-  {{ pokemon?.name }}
+  <div>
+    <img class="poke-image" src={{imgSrc}} />
+    <div>
+      {{ pokemon?.name }}
+    </div>
+    <div>
+      <button class="btn btn-primary btn-sm" (click)="onAddPokemonClick()">Add to Collection</button>
+    </div>
+  </div>
 </div>

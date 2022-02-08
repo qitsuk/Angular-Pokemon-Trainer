@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostListener, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Pokemon, PokemonAPICall } from "../models/pokemon.model";
+import { Observable } from "rxjs";
+import { Pokemon } from "../models/pokemon.model";
 import { PokemonService } from "../services/pokemon.service";
 
 @Component({
@@ -14,14 +15,18 @@ export class CataloguePage implements OnInit {
     constructor(
         private readonly router: Router,
         private readonly pokemonService: PokemonService
-    ) {}
-    private _url = "https://pokeapi.co/api/v2/pokemon?limit=50";
+    ) {
+    }
+    private _url: string = "https://pokeapi.co/api/v2/pokemon?limit=50";
 
     ngOnInit(): void {
         this.pokemonService.fetchFiftyPokemon(this._url).subscribe(pokemon => {
             this.pokemonList.push(...pokemon.results);
             this._url = pokemon.next;
-            console.log(this.pokemonList);
+            for (let poke of this.pokemonList) {
+              poke.num = parseInt(poke.url.replace(/.*\D(?=\d)|\D+$/g, ""));
+              poke.name = poke.name.charAt(0).toUpperCase() + poke.name.slice(1);
+            }
         })
     }
 
@@ -37,9 +42,14 @@ export class CataloguePage implements OnInit {
         this.router.navigateByUrl("home");
     }
 
+
     loadMore(): void {
       this.pokemonService.fetchFiftyPokemon(this._url).subscribe(pokemon => {
         this.pokemonList.push(...pokemon.results);
+        for (let poke of this.pokemonList) {
+          poke.num = parseInt(poke.url.replace(/.*\D(?=\d)|\D+$/g, ""));
+          poke.name = poke.name.charAt(0).toUpperCase() + poke.name.slice(1);
+        }
         this._url = pokemon.next;
       })
     }

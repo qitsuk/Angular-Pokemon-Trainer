@@ -1,4 +1,10 @@
-.pokeimage {
-  height: 90px;
-  width: 90px;
+.poke-image {
+  height: 150px;
+  width: 150px;
+}
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  float: left;
+  overflow: auto;
 }
