@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Trainer } from "../models/trainer.model";
+import { TrainerService } from "../services/trainer.service";
 
 @Component({
     selector: "app-frontpage",
@@ -9,20 +11,35 @@ import { Router } from "@angular/router";
 })
 
 export class FrontPage {
+    get trainers(): Trainer[] {
+        return this.trainerService.trainers();
+    }
 
     constructor(
-        private readonly router: Router
+        private readonly router: Router,
+        private readonly trainerService: TrainerService
     ) {}
-    public onSubmit(usernameForm :NgForm): void {
+
+    public onSubmit(usernameForm :NgForm) {
         console.log(usernameForm.valid);
+        
+        let newTrainer: Trainer = 
+            {
+                'id': 10,
+                'username': usernameForm.controls['username'].value,
+                'pokemon': {'name': ''}
+            }
+        this.trainerService.postTrainer(newTrainer)
+            .subscribe(trainer => this.trainers.push(trainer));
+
         this.setLocalUsername(usernameForm.controls['username'].value);
+
         this.router.navigateByUrl("trainer");
 
     }
 
-    private setLocalUsername(username: string): void {
+    private setLocalUsername(username: string) {
         console.log("Set local username function called!")
         localStorage.setItem('username', username);
-    
     }
 }
