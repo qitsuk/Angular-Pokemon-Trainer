@@ -15,12 +15,13 @@ export class CataloguePage implements OnInit {
         private readonly router: Router,
         private readonly pokemonService: PokemonService
     ) {}
-    
-    ngOnInit(): void {
-        this.pokemonService.fetchFiftyPokemon().subscribe(pokemon => {
-            this.pokemonList = pokemon.results;
-            console.log(this.pokemonList);
+    private _url = "https://pokeapi.co/api/v2/pokemon?limit=50";
 
+    ngOnInit(): void {
+        this.pokemonService.fetchFiftyPokemon(this._url).subscribe(pokemon => {
+            this.pokemonList.push(...pokemon.results);
+            this._url = pokemon.next;
+            console.log(this.pokemonList);
         })
     }
 
@@ -35,5 +36,13 @@ export class CataloguePage implements OnInit {
         localStorage.clear();
         this.router.navigateByUrl("home");
     }
+
+    loadMore(): void {
+      this.pokemonService.fetchFiftyPokemon(this._url).subscribe(pokemon => {
+        this.pokemonList.push(...pokemon.results);
+        this._url = pokemon.next;
+      })
+    }
+
 
 }

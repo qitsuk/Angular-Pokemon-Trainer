@@ -12,8 +12,8 @@ export class PokemonService {
     private _pokemon: Pokemon[] = [];
     private _error: string = "";
 
-    fetchFiftyPokemon(): Observable<PokemonAPICall> {
-        return this.http.get<PokemonAPICall>("https://pokeapi.co/api/v2/pokemon?limit=50")
+    fetchFiftyPokemon(url: string): Observable<PokemonAPICall> {
+        return this.http.get<PokemonAPICall>(url)
         .pipe(map(response => response));
     }
 
