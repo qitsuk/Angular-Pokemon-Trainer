@@ -23,18 +23,15 @@ export class FrontPage {
     public onSubmit(usernameForm :NgForm) {
         console.log(usernameForm.valid);
 
-        let newTrainer: Trainer =
-            {
-                'id': 10,
-                'username': usernameForm.controls['username'].value,
-                'pokemon': {'name': ''}
-            }
-        this.trainerService.postTrainer(newTrainer)
-            .subscribe(trainer => this.trainers.push(trainer));
+        this.setLocalUsername(usernameForm.controls['username'].value);
 
-        this.trainerService.saveToLocal(usernameForm.controls['username'].value);
+        this.trainerService.login(usernameForm.controls['username'].value)
+            .subscribe({
+                next: () => {
+
+                }
+            })
 
         this.router.navigateByUrl("trainer");
-
     }
 }
