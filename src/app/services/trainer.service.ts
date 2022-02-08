@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Trainer } from "../models/trainer.model";
-import { catchError, Observable } from "rxjs";
+import { map, Observable, of, switchMap } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +11,8 @@ import { catchError, Observable } from "rxjs";
 export class TrainerService {
     private _trainers: Trainer[] = [];
     private _error: string = '';
-    private _trainerUrl: string = 'https://noroff-assignment-api.herokuapp.com/trainers';
-    private _apiKey: string = 'Wl5NCSOy6QDMhp73UHlpqczdjVrSCOi22e1UFy8z4U6gYPq4xgpWh632uL29wQj2';
+    private _trainerUrl: string = environment.apiTrainersUrl;
+    private _apiKey: string = environment.apiKey;
     private _httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -21,7 +22,36 @@ export class TrainerService {
 
     constructor(private readonly http: HttpClient) { }
 
-    public fetchTrainers(): void {
+    public login(username: string): Observable<Trainer> {
+        return this.checkUsername(username)
+            .pipe(
+                switchMap((trainer: Trainer | undefined) => {
+                    if(trainer === undefined) { // user does not exist
+                        return this.createTrainer(username)
+                    }
+                    return of(trainer);
+                })
+            )
+    }
+
+    //Checks if the username is already in the database
+    private checkUsername(username: string): Observable<Trainer | undefined> {
+        return this.http.get<Trainer[]>(`${this._trainerUrl}?username=${username}`)
+            .pipe(
+                map((response: Trainer[]) => response.pop())
+            )
+    }
+
+    //Creates the user if the user does not exist
+    private createTrainer(username: string): Observable<Trainer> {
+        const trainer = {
+            username,
+            pokemon: []
+        }
+        return this.http.post<Trainer>(this._trainerUrl, trainer, this._httpOptions)
+    }
+    
+    /*public fetchTrainers(): void {
         this.http.get<Trainer[]>
         (this._trainerUrl)
             .subscribe({
@@ -36,7 +66,7 @@ export class TrainerService {
 
     public postTrainer(trainer: Trainer): Observable<Trainer> {
         return this.http.post<Trainer>(this._trainerUrl, trainer, this._httpOptions);
-    }
+    }*/
 
     public trainers(): Trainer[] {
         return this._trainers;
