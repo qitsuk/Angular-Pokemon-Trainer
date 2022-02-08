@@ -22,7 +22,7 @@ In this project, we aim to build a Pokémon Trainer Single Page Application, usi
 
 ### Online Deployment
 
-* To see a deployed version of this SPA, please visit https://placeholder.herokuapp.com/
+* To see a deployed version of this SPA, please visit https://pokemon-trainer-project.herokuapp.com/home
 
 ## Help
 
