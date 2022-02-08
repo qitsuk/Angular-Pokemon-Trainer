@@ -4,5 +4,5 @@ const app = express();
 app.use(express.static(__dirname + '/dist/<angular-pokemon-trainer>'));
 app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+
-'/dist/<app-name>/index.html'));});
+'/dist/<angular-pokemon-trainer>/index.html'));});
 app.listen(process.env.PORT || 3000);
